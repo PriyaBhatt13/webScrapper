@@ -1,0 +1,36 @@
+{
+  "name": "webscrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp es6Pipeline:build:release && node ./backend/index.js",
+    "build": "gulp es6Pipeline:build:release",
+    "dev": "gulp es6Pipeline:watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PriyaBhatt13/webScrapper.git"
+  },
+  "author": "priya bhatt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PriyaBhatt13/webScrapper/issues"
+  },
+  "homepage": "https://github.com/PriyaBhatt13/webScrapper#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "curl": "^0.1.4",
+    "express": "^4.15.2",
+    "gulp": "^3.9.1",
+    "gulp-webpack-es6-pipeline": "^9.0.2",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "superagent": "^3.5.2"
+  },
+  "devDependencies": {
+    "gulp-sass": "^3.1.0",
+    "normalize-scss": "^6.0.0"
+  }
+}

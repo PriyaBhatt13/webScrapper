@@ -1,0 +1,65 @@
+@import 'normalize.scss';
+@import 'component-variables.scss';
+@import 'mixins.scss';
+
+body{
+	background : $white;
+	font-family: 'Open Sans', sans-serif;
+}
+h1{
+	font-size:30px;
+	padding:1%;
+	text-align:center;
+}
+#app{
+	padding:2%;
+	@include box-sizing(border-box);
+}
+input[type='url']{
+	width: 74%;
+    height: 50px;
+    padding: 1%;
+    border: 1px solid $black;
+    font-size: 18px;
+    float: left;
+}
+input[type='button']{
+	float: right;
+    width: 20%;
+    height: 50px;
+    margin: 1% 0 0 0;
+    color:$white;
+    border-color: $blue;
+    background-color:$blue;
+    cursor:pointer;
+    font-weight: 200;
+    @include border-radius(2px);
+    &:disabled{
+    	border-color: $gray-CC;
+    	background-color:$gray-CC;
+    	cursor:default;
+    }
+}
+.error-service{
+	clear:both;
+	padding: 2% 2% 2% 0;
+	font-size:25px;
+	.error-code{
+		padding:0 1% 0 0;
+	}
+}
+
+.report-wrapper{
+	fieldset{
+		border:1px solid $black;
+		legend{
+			font-size:25px;
+		}
+		h3{
+			font-size:25px;
+		}
+		ul li{
+			font-size:20px;
+		}
+	}
+}
