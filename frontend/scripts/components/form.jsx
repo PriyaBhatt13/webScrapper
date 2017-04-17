@@ -2,6 +2,7 @@ import React from 'react';
 import request from 'superagent';
 import ErrorWrapper from './errorWrapper';
 import Report from './analyzeReport';
+import ProgressIndicator from './progressIndicator';
 
 class Form extends React.Component {
 
@@ -9,7 +10,8 @@ class Form extends React.Component {
         super(props);
         this.state = {
             isValidURL: false,
-            url: ''
+            url: '',
+            loading:false
         }
     }
 
@@ -34,22 +36,31 @@ class Form extends React.Component {
 
     handleButtonClick() {
         let url = this.state.url;
+        this.updateState({
+            loading:true
+        });
         request
             .post('/api/analyzePage')
             .query({pageURL: url})
             .then((res) => {
                 this.updateState({
-                    apiResponse: res.body
+                    apiResponse: res.body,
+                    loading:false
                 });
             }, (err) => {
                 this.updateState({
-                    apiResponse: err
+                    apiResponse: err,
+                    loading:false
                 });
             });
     }
 
     render() {
-        return <div>
+
+        if(this.state.loading){
+            return <ProgressIndicator/>
+        }else{
+            return <div>
             <input type="url" ref="url" placeholder="http://example.com" onInput={this.validatePassesURL.bind(this)}/>
             <input type="button" disabled={!this.state.isValidURL} onClick={this.handleButtonClick.bind(this)}
                    value="Analyze"/>
@@ -61,6 +72,8 @@ class Form extends React.Component {
                     <Report pageProperties={this.state.apiResponse.pageProperties}/> : null
             }
         </div>
+        }
+        
     }
 }
 
