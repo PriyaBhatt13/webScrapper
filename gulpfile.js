@@ -12,8 +12,8 @@ es6Pipeline.registerBuildGulpTasks(
     }
 );
 
-var input = __dirname + '/frontend/stylesheets/*.scss'
-var output =__dirname + '/frontend/styles/css/'
+var input = __dirname + '/frontend/stylesheets/*.scss';
+var output =__dirname + '/frontend/bundles/styles/';
 
 gulp.task('sass', function() {
     gulp.src(input)

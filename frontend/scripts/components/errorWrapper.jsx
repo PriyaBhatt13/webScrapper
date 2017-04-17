@@ -7,12 +7,14 @@ class ErrorWrapper extends React.Component {
 
     render(){
         return <div className="error-service">
-            <span className="error-code">
+            <div className="error-code">
+                <strong>Code : </strong>
                 {this.props.apiResponse.statusCode}
-            </span>
-            <span className="error-msg">
+            </div>
+            <div className="error-msg">
+                <strong>Message : </strong>
                 {this.props.apiResponse.statusText}
-            </span>
+            </div>
         </div>
     }
 }

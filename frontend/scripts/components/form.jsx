@@ -11,14 +11,14 @@ class Form extends React.Component {
         this.state = {
             isValidURL: false,
             url: '',
-            loading:false
+            loading: false
         }
     }
 
     validatePassesURL(evt) {
         let url = evt.target.value;
         let validUrl;
-        let re = /[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/;
+        let re = new RegExp('^(?:[a-z]+:)?//');
         let isValid = false;
         if (re.test(url)) {
             isValid = true;
@@ -37,7 +37,7 @@ class Form extends React.Component {
     handleButtonClick() {
         let url = this.state.url;
         this.updateState({
-            loading:true
+            loading: true
         });
         request
             .post('/api/analyzePage')
@@ -45,35 +45,36 @@ class Form extends React.Component {
             .then((res) => {
                 this.updateState({
                     apiResponse: res.body,
-                    loading:false
+                    loading: false
                 });
             }, (err) => {
                 this.updateState({
                     apiResponse: err,
-                    loading:false
+                    loading: false
                 });
             });
     }
 
     render() {
 
-        if(this.state.loading){
+        if (this.state.loading) {
             return <ProgressIndicator/>
-        }else{
+        } else {
             return <div>
-            <input type="url" ref="url" placeholder="http://example.com" onInput={this.validatePassesURL.bind(this)}/>
-            <input type="button" disabled={!this.state.isValidURL} onClick={this.handleButtonClick.bind(this)}
-                   value="Analyze"/>
-            {
-                this.state.apiResponse ? <ErrorWrapper apiResponse={this.state.apiResponse}/> : null
-            }
-            {
-                this.state.apiResponse && this.state.apiResponse.pageProperties ?
-                    <Report pageProperties={this.state.apiResponse.pageProperties}/> : null
-            }
-        </div>
+                <input type="url" ref="url" placeholder="http://example.com"
+                       onInput={this.validatePassesURL.bind(this)}/>
+                <input type="button" disabled={!this.state.isValidURL} onClick={this.handleButtonClick.bind(this)}
+                       value="Analyze"/>
+                {
+                    this.state.apiResponse ? <ErrorWrapper apiResponse={this.state.apiResponse}/> : null
+                }
+                {
+                    this.state.apiResponse && this.state.apiResponse.pageProperties ?
+                        <Report pageProperties={this.state.apiResponse.pageProperties}/> : null
+                }
+            </div>
         }
-        
+
     }
 }
 

@@ -13,7 +13,8 @@ class Heading extends React.Component {
 
     render() {
         return <div>
-            <h3>Page has  {this.props.headingProps.numberOfHeadings} {pluralizer('heading', 'headings', this.props.headingProps.numberOfHeadings)}</h3>
+            <h3>Page
+                has {this.props.headingProps.numberOfHeadings} {pluralizer('heading', 'headings', this.props.headingProps.numberOfHeadings)}</h3>
             <ul>{TypesOfHeadings(this.props.headingProps.headingList)}</ul>
         </div>
     }

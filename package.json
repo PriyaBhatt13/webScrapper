@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp es6Pipeline:build:release && node ./backend/index.js",
-    "build": "gulp es6Pipeline:build:release",
-    "dev": "gulp es6Pipeline:watch"
+    "build": "gulp es6Pipeline:build:release && gulp sass",
+    "start": "node ./backend/index.js"
   },
   "repository": {
     "type": "git",

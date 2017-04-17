@@ -1,24 +1,13 @@
 import React from 'react';
 import pluralizer from './pluralizer';
 
-let TypesOfLinks = (list) => {
-    return Object.keys(list).map((item, index) => {
-        return <li key={index}>{item.toUpperCase()} - {list[item].length}</li>
-    })
+const TypesOfLinks = (list) => Object.keys(list).map((item, index) => {
+    return <li key={index}>{item.toUpperCase()} - {list[item].length}</li>;
+});
+
+export default (props) => {
+    return <div>
+        <h3>Page has {props.numberOfLinks} {pluralizer('Link', 'Links', props.numberOfLinks)}</h3>
+        <ul>{TypesOfLinks(props.linksList)}</ul>
+    </div>
 };
-
-class Link extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <div>
-            <h3>Page has  {this.props.linkProps.numberOfLinks} {pluralizer('Link', 'Links', this.props.linkProps.numberOfLinks)}</h3>
-            <ul>{TypesOfLinks(this.props.linkProps.linksList)}</ul>
-        </div>
-    }
-
-}
-
-export default Link;

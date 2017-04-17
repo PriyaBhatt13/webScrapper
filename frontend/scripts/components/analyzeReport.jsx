@@ -12,7 +12,7 @@ class Report extends React.Component {
             <fieldset>
                 <legend>{this.props.pageProperties.title}</legend>
                 <Heading headingProps={this.props.pageProperties.headings}/>
-                <Link linkProps={this.props.pageProperties.links}/>
+                {Link(this.props.pageProperties.links)}
                 <div>{this.props.pageProperties.pageHasLogin ?
                     <strong><i>"This page has got a login form"</i></strong> : null}</div>
             </fieldset>
