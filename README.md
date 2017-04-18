@@ -19,6 +19,7 @@ sass
 superagent
 
 Tasks to run:
+`npm install // to install all required dependencies`
 `npm run build // to build front-end assets`
 `npm start // to start local api server`
 
